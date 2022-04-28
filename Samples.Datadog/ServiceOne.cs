@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SerilogTimings;
+using StatsdClient;
 
 namespace Samples
 {
     public class ServiceOne : IHostedService
     {
-        public ServiceOne(ILogger<ServiceOne> logger, IHostApplicationLifetime appLifetime)
+        public ServiceOne(ILogger<ServiceOne> logger, IHostApplicationLifetime appLifetime, IDogStatsd metrics)
         {
             this.logger = logger;
             this.appLifetime = appLifetime;
+            this.metrics = metrics;
             this.appLifetime = appLifetime;
             this.logger = logger;
         }
@@ -17,32 +18,25 @@ namespace Samples
         private int? exitCode;
         private readonly ILogger<ServiceOne> logger;
         private readonly IHostApplicationLifetime appLifetime;
+        private readonly IDogStatsd metrics;
 
         private void Run()
         {
             try
             {
-                // Loop
-                var structuredData = new StructuredData();
-                var simpleData = "This is a string.";
-
-                // Use the static Serilog.Log class for logging.
-                this.logger.LogTrace("Here's a Trace message.");
-                this.logger.LogDebug("Here's a Debug message. Only Public Properties (not fields) are shown on structured data. Structured data: {@sampleData}. Simple data: {simpleData}.", structuredData, simpleData);
-                this.logger.LogInformation(new Exception("Exceptions can be put on all log levels"), "Here's an Info message.");
-                this.logger.LogWarning("Here's a Warning message.");
-                this.logger.LogError(new Exception("This is an exception."), "Here's an Error message.");
-                this.logger.LogCritical("Here's a Critical message.");
-
-                var scopeProps = new Dictionary<string, object> {
-                    { "TransactionId", 12345 },
-                    { "ResponseJson", System.Text.Json.JsonSerializer.Serialize(structuredData) },
-                };
-                using (this.logger.BeginScope(scopeProps))
+                var i = 0;
+                while(true)
                 {
-                    this.logger.LogInformation("Transaction completed in {DurationMs}ms...", 30);
+                    this.logger.LogInformation("Loop"); 
+                    using (this.metrics.StartTimer("dev.sample.timer"))
+                    {
+
+                        System.Threading.Thread.Sleep(10000); 
+                    }
+                    i++;
+                    this.metrics.Counter("dev.sample.count", i);
+                    this.metrics.Event("Test", "Sample Event");
                 }
-                // 2022-04-21 15:48:52.181 [Information] (Serilog.Samples.ServiceOne)  Transaction completed in 30ms... {TransactionId=12345, ResponseJson="{\"PublicStringProperty\":\"Public property value\",\"PublicIntProperty\":1}"}     
             }
             catch (Exception ex)
             {

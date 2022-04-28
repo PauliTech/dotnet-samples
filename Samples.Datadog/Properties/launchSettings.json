@@ -1,0 +1,40 @@
+{
+  "profiles": {
+    "Samples.Datadog": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CORECLR_PROFILER_PATH": ".\\datadog\\win-x64\\Datadog.Trace.ClrProfiler.Native.dll",
+        "DD_VERSION": "0.0.3",
+        "COR_ENABLE_PROFILING": "1",
+        "COR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+        "CORECLR_ENABLE_PROFILING": "1",
+        "DD_TRACE_SAMPLE_RATE": "1",
+        "DD_SERVICE": "samples-dotnet",
+        "DD_RUNTIME_METRICS_ENABLED": "1",
+        "DD_AGENT_HOST": "192.168.1.252",       
+        "DD_DOTNET_TRACER_HOME": "./datadog",
+        "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+        "DD_ENV": "dev",
+        "DD_PROFILING_ENABLED": "1"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "environmentVariables": {
+        "CORECLR_PROFILER_PATH": "./datadog/linux-x64/Datadog.Trace.ClrProfiler.Native.so",
+        "DD_VERSION": "0.0.3",
+        "COR_ENABLE_PROFILING": "1",
+        "COR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+        "CORECLR_ENABLE_PROFILING": "1",
+        "DD_TRACE_SAMPLE_RATE": "1",
+        "DD_AGENT_HOST": "192.168.1.252",
+        "DD_SERVICE": "samples-dotnet",
+        "DD_RUNTIME_METRICS_ENABLED": "1",
+        "DD_DOTNET_TRACER_HOME": "./datadog",
+        "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+        "DD_ENV": "dev",
+        "DD_PROFILING_ENABLED": "1"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  samples.datadog:
+    image: ${DOCKER_REGISTRY-}samplesdatadog
+    build:
+      context: .
+      dockerfile: Samples.Datadog/Dockerfile
+    depends_on:
+      - datadog-agent
+    environment:
+      DD_ENV: "dev"
+      DD_SERVICE: "samples-dotnet"
+      DD_VERSION: "0.0.3"
+      DD_AGENT_HOST: "192.168.1.252"
+      DD_RUNTIME_METRICS_ENABLED: "1"
+      DD_PROFILING_ENABLED: "1"
+      DD_TRACE_SAMPLE_RATE: "1"
+      COR_ENABLE_PROFILING: "1"
+      CORECLR_ENABLE_PROFILING: "1"
+      CORECLR_PROFILER: "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}"
+      COR_PROFILER: "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}"
+      ##CORECLR_PROFILER_PATH: /app/bin/Debug/net6.0/datadog/linux-x64/Datadog.Trace.ClrProfiler.Native.so
+      #DD_DOTNET_TRACER_HOME: /app/bin/Debug/net6.0/datadog

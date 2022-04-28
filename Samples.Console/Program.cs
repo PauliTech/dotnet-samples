@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using Serilog.Filters;
-using Serilog.Samples;
+using Samples;
 
 const string LogOutput = "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} {Level} ({SourceContext})] {Scope} {Message} {Properties:j}{NewLine}{Exception}";
 

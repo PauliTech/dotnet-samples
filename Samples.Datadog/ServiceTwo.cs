@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 
 namespace Samples
@@ -29,6 +30,10 @@ namespace Samples
                     this.logger.LogError(new Exception("This is an exception."), "Here's an Error message.");
                     this.logger.LogCritical("Here's a Critical message.");
                 }
+
+                this.logger.LogInformation(Environment.GetEnvironmentVariables()?.ToString() ?? "");
+                
+                
             }
             catch (Exception ex)
             {
