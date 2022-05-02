@@ -9,6 +9,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Datadog", "Samples.Datadog\Samples.Datadog.csproj", "{2B419FB7-E46C-4207-93EB-2FA4E08BE96A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.CommandBus", "Samples.CommandBus\Samples.CommandBus.csproj", "{76A188FD-0915-4FEB-A9FA-E86E7A8E7397}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2B419FB7-E46C-4207-93EB-2FA4E08BE96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B419FB7-E46C-4207-93EB-2FA4E08BE96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B419FB7-E46C-4207-93EB-2FA4E08BE96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A188FD-0915-4FEB-A9FA-E86E7A8E7397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A188FD-0915-4FEB-A9FA-E86E7A8E7397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A188FD-0915-4FEB-A9FA-E86E7A8E7397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A188FD-0915-4FEB-A9FA-E86E7A8E7397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
